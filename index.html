@@ -830,231 +830,688 @@
 
     // Base de 10 recetas
     const recipes = [
-      {
-        id: "pollo_arroz",
-        name: "Bowl de pollo y arroz integral con verduras",
-        description:
-          "Un plato completo con proteína magra, hidratos de absorción lenta y verduras saciantes, perfecto para después de entrenar.",
-        macros: { kcal: 620, protein: 45, carbs: 70, fat: 16 },
-        price: 3.8,
-        keywords: ["pollo", "arroz", "arroz integral", "zanahoria", "calabacín"],
-        ingredients: [
-          "130 g de pechuga de pollo",
-          "70 g de arroz integral en crudo",
-          "1/2 calabacín",
-          "1 zanahoria pequeña",
-          "1 cucharada de aceite de oliva (10 g)",
-          "Sal, pimienta y especias al gusto (pimentón, ajo en polvo…)"],
-        steps: [
-          "Cuece el arroz integral en abundante agua con una pizca de sal siguiendo las instrucciones del envase.",
-          "Mientras tanto, corta el pollo en dados pequeños y salpiméntalo. Saltea el pollo en una sartén con la mitad del aceite hasta que quede dorado por fuera y bien hecho por dentro.",
-          "Lava y corta el calabacín y la zanahoria en dados finos. Saltéalos en la misma sartén con el resto del aceite durante 4–5 minutos, hasta que queden tiernos pero todavía con algo de textura.",
-          "Escurre el arroz y mézclalo en un bol con las verduras salteadas. Coloca el pollo por encima, añade tus especias favoritas y ajusta de sal antes de servir."
-        ]
-      },
-      {
-        id: "tostada_aguacate",
-        name: "Tostadas integrales con aguacate y huevo a la plancha",
-        description:
-          "Desayuno o cena rápida con buena cantidad de proteína y grasas saludables, muy fácil de repetir a lo largo de la semana.",
-        macros: { kcal: 520, protein: 26, carbs: 45, fat: 24 },
-        price: 2.6,
-        keywords: ["aguacate", "huevo", "pan", "tostada"],
-        ingredients: [
-          "2 rebanadas de pan integral (60–70 g)",
-          "1/2 aguacate maduro",
-          "2 huevos",
-          "1 cucharadita de aceite de oliva",
-          "Sal, pimienta y zumo de limón al gusto"
-        ],
-        steps: [
-          "Tuesta las rebanadas de pan integral hasta que queden crujientes por fuera pero todavía tiernas por dentro.",
-          "En un bol pequeño, aplasta el aguacate con un tenedor. Añade una pizca de sal, pimienta y unas gotas de limón para que mantenga el color.",
-          "Calienta una sartén antiadherente con un poquito de aceite y cocina los huevos a la plancha o a la vista, dejando la yema al punto que prefieras.",
-          "Unta el pan con el aguacate, coloca un huevo sobre cada tostada y termina con un poco más de pimienta o tus especias favoritas."
-        ]
-      },
-      {
-        id: "pasta_atun",
-        name: "Pasta integral con atún y salsa de tomate casera rápida",
-        description:
-          "Plato muy sencillo y saciante que combina hidratos complejos con proteína de calidad, ideal para días ajetreados.",
-        macros: { kcal: 640, protein: 36, carbs: 82, fat: 14 },
-        price: 3.0,
-        keywords: ["pasta", "atún", "tomate"],
-        ingredients: [
-          "80 g de pasta integral en crudo",
-          "1 lata de atún al natural (aprox. 80 g escurridos)",
-          "150 g de tomate triturado o salsa de tomate sencilla",
-          "1 diente de ajo",
-          "1 cucharadita de aceite de oliva",
-          "Orégano seco, sal y pimienta"
-        ],
-        steps: [
-          "Cuece la pasta integral en agua hirviendo con sal hasta que quede al dente. Reserva un poco del agua de cocción.",
-          "En una sartén, sofríe el ajo picado con el aceite a fuego medio sin que llegue a quemarse.",
-          "Añade el tomate triturado, una pizca de sal, pimienta y orégano. Cocina 6–8 minutos hasta que la salsa espese ligeramente.",
-          "Incorpora el atún escurrido y desmigado a la salsa, mezcla y agrega la pasta escurrida. Si queda demasiado espeso, añade una o dos cucharadas del agua de cocción."
-        ]
-      },
-      {
-        id: "ensalada_garbanzos",
-        name: "Ensalada completa de garbanzos con verduras y feta",
-        description:
-          "Una opción fresca y rápida que puedes dejar preparada con antelación, rica en fibra y proteína vegetal.",
-        macros: { kcal: 540, protein: 24, carbs: 56, fat: 20 },
-        price: 3.2,
-        keywords: ["garbanzos", "pepino", "tomate", "ensalada"],
-        ingredients: [
-          "160 g de garbanzos cocidos escurridos",
-          "1 tomate grande o 6 tomates cherry",
-          "1/2 pepino",
-          "30 g de queso feta o queso fresco",
-          "1 cucharada de aceite de oliva",
-          "Zumo de limón, sal, pimienta y orégano seco"
-        ],
-        steps: [
-          "Aclara los garbanzos bajo el grifo y escúrrelos bien para que no añadan líquido extra a la ensalada.",
-          "Corta el tomate y el pepino en dados pequeños. Si usas tomates cherry, pártelos por la mitad.",
-          "En un bol grande, mezcla garbanzos, tomate y pepino. Aliña con el aceite de oliva, el zumo de limón, sal, pimienta y orégano.",
-          "Desmenuza el queso por encima justo antes de servir para que mantenga su textura."
-        ]
-      },
-      {
-        id: "tofu_brocoli",
-        name: "Salteado de tofu con brócoli y arroz",
-        description:
-          "Receta vegetariana alta en proteína, con buena cantidad de fibra y muy fácil de adaptar a diferentes cantidades.",
-        macros: { kcal: 610, protein: 32, carbs: 70, fat: 18 },
-        price: 3.7,
-        keywords: ["tofu", "brócoli", "arroz"],
-        ingredients: [
-          "100 g de tofu firme",
-          "70 g de arroz (blanco o integral) en crudo",
-          "150 g de brócoli en ramilletes",
-          "1 cucharada de salsa de soja baja en sal",
-          "1 cucharada de aceite de oliva o de sésamo suave",
-          "Ajo en polvo, pimienta y semillas de sésamo (opcional)"
-        ],
-        steps: [
-          "Cuece el arroz en agua con una pizca de sal hasta que esté en su punto. Reserva.",
-          "Corta el tofu en dados y sécalo con papel de cocina para que se dore mejor.",
-          "Saltea el tofu en una sartén amplia con la mitad del aceite hasta que los bordes estén dorados.",
-          "Añade el brócoli en ramilletes pequeños, el resto del aceite y un chorrito de agua. Cocina 4–5 minutos y, al final, incorpora la salsa de soja y las especias. Sirve el salteado sobre el arroz."
-        ]
-      },
-      {
-        id: "wrap_pavo",
-        name: "Wrap integral de pavo, hummus y verduras crujientes",
-        description:
-          "Opción muy práctica para comer fuera de casa: se prepara en pocos minutos y se transporta bien.",
-        macros: { kcal: 500, protein: 30, carbs: 50, fat: 16 },
-        price: 3.1,
-        keywords: ["pavo", "hummus", "wrap", "tortilla"],
-        ingredients: [
-          "1 tortilla integral grande tipo wrap",
-          "60–70 g de fiambre de pavo de buena calidad o pechuga de pavo a la plancha",
-          "30 g de hummus",
-          "Hojas de lechuga o espinaca fresca",
-          "Tiras de zanahoria y pepino",
-          "Pimienta y un chorrito de limón"
-        ],
-        steps: [
-          "Coloca la tortilla integral abierta sobre un plato o tabla.",
-          "Unta el centro con el hummus dejando los bordes libres para poder cerrar el wrap.",
-          "Añade las lonchas de pavo, la lechuga o espinaca y las tiras de zanahoria y pepino.",
-          "Dobla los laterales hacia dentro y enrolla desde la parte inferior hasta formar un cilindro compacto."
-        ]
-      },
-      {
-        id: "avena_platano",
-        name: "Avena cremosa con plátano y frutos rojos",
-        description:
-          "Un desayuno caliente y saciante, ideal para días fríos o para recuperar energía después de entrenar por la mañana.",
-        macros: { kcal: 480, protein: 20, carbs: 72, fat: 10 },
-        price: 1.8,
-        keywords: ["avena", "plátano", "frutos rojos"],
-        ingredients: [
-          "50 g de copos de avena",
-          "250 ml de leche o bebida vegetal",
-          "1 plátano mediano",
-          "Un puñado de frutos rojos (frescos o congelados)",
-          "Canela en polvo al gusto"
-        ],
-        steps: [
-          "Coloca la avena y la leche en un cazo a fuego medio, removiendo de vez en cuando para que no se pegue.",
-          "Cuando empiece a espesar, baja un poco el fuego y cocina 3–4 minutos más hasta obtener una textura cremosa.",
-          "Sirve en un bol y añade el plátano en rodajas y los frutos rojos por encima.",
-          "Termina con un poco de canela y, si lo necesitas, una cucharadita de miel o edulcorante."
-        ]
-      },
-      {
-        id: "salmon_patata",
-        name: "Salmón al horno con patata asada y ensalada verde",
-        description:
-          "Plato muy completo con grasas saludables, hidratos y vegetales, perfecto para una comida tranquila.",
-        macros: { kcal: 700, protein: 38, carbs: 60, fat: 30 },
-        price: 5.0,
-        keywords: ["salmón", "patata", "ensalada"],
-        ingredients: [
-          "140 g de lomo de salmón",
-          "200 g de patata",
-          "1 cucharada de aceite de oliva",
-          "Mezcla de hojas verdes (rúcula, lechuga, espinaca…) ",
-          "Zumo de limón, sal y pimienta"
-        ],
-        steps: [
-          "Precalienta el horno a 190 ºC. Lava las patatas, córtalas en gajos y mézclalas con un poco de aceite, sal y pimienta.",
-          "Coloca las patatas en una bandeja y hornéalas 20–25 minutos, dándoles la vuelta a mitad de tiempo.",
-          "Añade el salmón a la bandeja, salpimiéntalo y riégalo con un poco de limón. Hornea 10–12 minutos más, según grosor.",
-          "Sirve el salmón con las patatas asadas y una ensalada verde aliñada de forma sencilla."
-        ]
-      },
-      {
-        id: "tortilla_espinacas",
-        name: "Tortilla de claras con espinacas y queso fresco",
-        description:
-          "Opción ligera pero alta en proteína, ideal para cenas en las que quieres algo rápido pero saciante.",
-        macros: { kcal: 430, protein: 35, carbs: 18, fat: 20 },
-        price: 2.4,
-        keywords: ["huevo", "claras", "espinacas", "queso"],
-        ingredients: [
-          "3 claras de huevo + 1 huevo entero",
-          "60 g de espinacas frescas",
-          "40 g de queso fresco o tipo burgos",
-          "1 cucharadita de aceite de oliva",
-          "Sal y pimienta"
-        ],
-        steps: [
-          "Bate las claras con el huevo entero en un bol y añade una pizca de sal y pimienta.",
-          "Saltea ligeramente las espinacas en una sartén con un poco de aceite hasta que se reduzcan de volumen.",
-          "Vierte la mezcla de huevo sobre las espinacas y reparte bien para que se integren.",
-          "Cuando empiece a cuajar, añade el queso desmenuzado, pliega la tortilla y termina de cocinar hasta que tenga la textura que prefieras."
-        ]
-      },
-      {
-        id: "buddha_lentejas",
-        name: "Buddha bowl de lentejas, calabaza asada y arroz",
-        description:
-          "Bol vegetal muy completo, rico en fibra y con una buena combinación de proteína vegetal e hidratos complejos.",
-        macros: { kcal: 680, protein: 28, carbs: 95, fat: 18 },
-        price: 3.9,
-        keywords: ["lentejas", "calabaza", "arroz"],
-        ingredients: [
-          "80 g de lentejas cocidas",
-          "60 g de arroz integral en crudo",
-          "150 g de calabaza en dados",
-          "1 cucharada de aceite de oliva",
-          "Pimentón, comino, sal y pimienta"
-        ],
-        steps: [
-          "Cuece el arroz integral en agua con sal siguiendo las indicaciones del envase.",
-          "Coloca la calabaza en dados en una bandeja, aliña con aceite, sal, pimienta y las especias, y hornea 20–25 minutos a 190 ºC.",
-          "Calienta ligeramente las lentejas cocidas en un cazo con un poco de agua o caldo y una pizca de sal.",
-          "Monta el bowl colocando una base de arroz, las lentejas a un lado y la calabaza asada al otro. Termina con un chorrito de aceite en crudo."
-        ]
-      }
-    ];
+  {
+    id: "pollo_arroz",
+    name: "Bowl de pollo y arroz integral con verduras",
+    description:
+      "Un plato completo con proteína magra, hidratos de absorción lenta y verduras saciantes, perfecto para después de entrenar.",
+    macros: { kcal: 620, protein: 45, carbs: 70, fat: 16 },
+    price: 3.8,
+    keywords: ["pollo", "arroz", "arroz integral", "zanahoria", "calabacín", "verduras"],
+    ingredients: [
+      "130 g de pechuga de pollo",
+      "70 g de arroz integral en crudo",
+      "1/2 calabacín",
+      "1 zanahoria pequeña",
+      "1 cucharada de aceite de oliva (10 g)",
+      "Sal, pimienta y especias al gusto (pimentón, ajo en polvo…)"
+    ],
+    steps: [
+      "Cuece el arroz integral en abundante agua con una pizca de sal siguiendo las instrucciones del envase.",
+      "Corta el pollo en dados pequeños, salpiméntalo y saltea en una sartén con la mitad del aceite hasta que quede dorado.",
+      "Lava y corta el calabacín y la zanahoria en dados finos y saltéalos en la misma sartén con el resto del aceite durante 4–5 minutos.",
+      "Escurre el arroz, mézclalo en un bol con las verduras y coloca el pollo por encima. Ajusta de sal y especias antes de servir."
+    ]
+  },
+  {
+    id: "tostada_aguacate",
+    name: "Tostadas integrales con aguacate y huevo a la plancha",
+    description:
+      "Desayuno o cena rápida con buena cantidad de proteína y grasas saludables, muy fácil de repetir a lo largo de la semana.",
+    macros: { kcal: 520, protein: 26, carbs: 45, fat: 24 },
+    price: 2.6,
+    keywords: ["aguacate", "huevo", "pan", "tostada", "desayuno"],
+    ingredients: [
+      "2 rebanadas de pan integral (60–70 g)",
+      "1/2 aguacate maduro",
+      "2 huevos",
+      "1 cucharadita de aceite de oliva",
+      "Sal, pimienta y zumo de limón al gusto"
+    ],
+    steps: [
+      "Tuesta las rebanadas de pan integral hasta que queden crujientes.",
+      "Aplasta el aguacate en un bol con sal, pimienta y unas gotas de limón.",
+      "Cocina los huevos a la plancha en una sartén con un poco de aceite hasta el punto que prefieras.",
+      "Unta el pan con el aguacate, coloca un huevo sobre cada tostada y termina con un poco de pimienta o especias."
+    ]
+  },
+  {
+    id: "pasta_atun",
+    name: "Pasta integral con atún y salsa de tomate rápida",
+    description:
+      "Plato sencillo y saciante que combina hidratos complejos con proteína de calidad, ideal para días ajetreados.",
+    macros: { kcal: 640, protein: 36, carbs: 82, fat: 14 },
+    price: 3.0,
+    keywords: ["pasta", "integral", "atún", "tomate", "salsa"],
+    ingredients: [
+      "80 g de pasta integral en crudo",
+      "1 lata de atún al natural (80 g escurridos)",
+      "150 g de tomate triturado",
+      "1 diente de ajo",
+      "1 cucharadita de aceite de oliva",
+      "Orégano seco, sal y pimienta"
+    ],
+    steps: [
+      "Cuece la pasta integral en agua hirviendo con sal hasta que esté al dente.",
+      "Sofríe el ajo picado en una sartén con aceite a fuego medio sin que se queme.",
+      "Añade el tomate triturado, sal, pimienta y orégano y cocina 6–8 minutos hasta que espese ligeramente.",
+      "Incorpora el atún escurrido a la salsa, mezcla y añade la pasta escurrida. Ajusta de sal y sirve caliente."
+    ]
+  },
+  {
+    id: "ensalada_garbanzos",
+    name: "Ensalada de garbanzos con verduras y queso fresco",
+    description:
+      "Opción fresca y rápida que puedes dejar preparada con antelación, rica en fibra y proteína vegetal.",
+    macros: { kcal: 540, protein: 24, carbs: 56, fat: 20 },
+    price: 3.2,
+    keywords: ["garbanzos", "ensalada", "pepino", "tomate", "queso"],
+    ingredients: [
+      "160 g de garbanzos cocidos escurridos",
+      "1 tomate grande o 6 tomates cherry",
+      "1/2 pepino",
+      "30 g de queso fresco",
+      "1 cucharada de aceite de oliva",
+      "Zumo de limón, sal, pimienta y orégano seco"
+    ],
+    steps: [
+      "Aclara los garbanzos bajo el grifo y escúrrelos bien.",
+      "Corta el tomate y el pepino en dados pequeños o en rodajas finas.",
+      "Mezcla garbanzos, tomate y pepino en un bol y aliña con aceite, limón, sal, pimienta y orégano.",
+      "Desmenuza el queso por encima justo antes de servir para que mantenga su textura."
+    ]
+  },
+  {
+    id: "tofu_brocoli",
+    name: "Salteado de tofu con brócoli y arroz",
+    description:
+      "Receta vegetariana alta en proteína, con buena cantidad de fibra y muy fácil de adaptar a diferentes cantidades.",
+    macros: { kcal: 610, protein: 32, carbs: 70, fat: 18 },
+    price: 3.7,
+    keywords: ["tofu", "brócoli", "arroz", "vegetariano"],
+    ingredients: [
+      "100 g de tofu firme",
+      "70 g de arroz en crudo (blanco o integral)",
+      "150 g de brócoli en ramilletes",
+      "1 cucharada de salsa de soja baja en sal",
+      "1 cucharada de aceite de oliva o de sésamo",
+      "Ajo en polvo y pimienta"
+    ],
+    steps: [
+      "Cuece el arroz en agua con una pizca de sal hasta que esté tierno.",
+      "Corta el tofu en dados, sécalo con papel de cocina y dóralo en una sartén con la mitad del aceite.",
+      "Añade el brócoli y un chorrito de agua, tapa y cocina 4–5 minutos hasta que quede tierno pero al dente.",
+      "Incorpora la salsa de soja y las especias, mezcla y sirve el salteado sobre el arroz."
+    ]
+  },
+  {
+    id: "wrap_pavo",
+    name: "Wrap integral de pavo, hummus y verduras crujientes",
+    description:
+      "Opción muy práctica para comer fuera de casa: se prepara en pocos minutos y se transporta bien.",
+    macros: { kcal: 500, protein: 30, carbs: 50, fat: 16 },
+    price: 3.1,
+    keywords: ["pavo", "hummus", "wrap", "tortilla", "zanahoria"],
+    ingredients: [
+      "1 tortilla integral grande",
+      "60–70 g de fiambre de pavo de buena calidad o pechuga de pavo a la plancha",
+      "30 g de hummus",
+      "Hojas de lechuga o espinaca fresca",
+      "Tiras de zanahoria y pepino",
+      "Pimienta y zumo de limón"
+    ],
+    steps: [
+      "Coloca la tortilla abierta sobre un plato.",
+      "Unta el centro con el hummus dejando los bordes libres.",
+      "Añade el pavo, la lechuga y las tiras de zanahoria y pepino.",
+      "Dobla los laterales hacia dentro y enrolla desde la parte inferior formando un cilindro compacto."
+    ]
+  },
+  {
+    id: "avena_platano",
+    name: "Avena cremosa con plátano y frutos rojos",
+    description:
+      "Desayuno caliente y saciante, ideal para recuperar energía después de entrenar por la mañana.",
+    macros: { kcal: 480, protein: 20, carbs: 72, fat: 10 },
+    price: 1.8,
+    keywords: ["avena", "plátano", "frutos rojos", "desayuno"],
+    ingredients: [
+      "50 g de copos de avena",
+      "250 ml de leche o bebida vegetal",
+      "1 plátano mediano",
+      "Un puñado de frutos rojos",
+      "Canela en polvo"
+    ],
+    steps: [
+      "Pon la avena y la leche en un cazo a fuego medio, removiendo para que no se pegue.",
+      "Cuando empiece a espesar, baja el fuego y cocina 3–4 minutos hasta lograr textura cremosa.",
+      "Sirve en un bol, añade el plátano en rodajas y los frutos rojos por encima.",
+      "Termina con canela y, si lo necesitas, un poco de miel o edulcorante."
+    ]
+  },
+  {
+    id: "salmon_patata",
+    name: "Salmón al horno con patata asada y ensalada verde",
+    description:
+      "Plato completo con grasas saludables, hidratos y vegetales, perfecto para una comida tranquila.",
+    macros: { kcal: 700, protein: 38, carbs: 60, fat: 30 },
+    price: 5.0,
+    keywords: ["salmón", "patata", "ensalada", "pescado"],
+    ingredients: [
+      "140 g de lomo de salmón",
+      "200 g de patata",
+      "1 cucharada de aceite de oliva",
+      "Mezcla de hojas verdes",
+      "Zumo de limón, sal y pimienta"
+    ],
+    steps: [
+      "Precalienta el horno a 190 ºC. Lava las patatas, córtalas en gajos y mézclalas con aceite, sal y pimienta.",
+      "Hornea las patatas 20–25 minutos, dándoles la vuelta a mitad de tiempo.",
+      "Añade el salmón a la bandeja, salpimiéntalo y riégalo con limón. Hornea 10–12 minutos más.",
+      "Acompaña con una ensalada verde aliñada de forma sencilla."
+    ]
+  },
+  {
+    id: "tortilla_espinacas",
+    name: "Tortilla de claras con espinacas y queso fresco",
+    description:
+      "Opción ligera pero alta en proteína, ideal para cenas rápidas y saciantes.",
+    macros: { kcal: 430, protein: 35, carbs: 18, fat: 20 },
+    price: 2.4,
+    keywords: ["huevo", "claras", "espinacas", "queso", "tortilla"],
+    ingredients: [
+      "3 claras de huevo + 1 huevo entero",
+      "60 g de espinacas frescas",
+      "40 g de queso fresco",
+      "1 cucharadita de aceite de oliva",
+      "Sal y pimienta"
+    ],
+    steps: [
+      "Bate las claras con el huevo entero en un bol y añade sal y pimienta.",
+      "Saltea las espinacas en una sartén con un poco de aceite hasta que reduzcan su volumen.",
+      "Vierte la mezcla de huevo sobre las espinacas y reparte bien.",
+      "Cuando empiece a cuajar, añade el queso desmenuzado, pliega la tortilla y termina la cocción."
+    ]
+  },
+  {
+    id: "buddha_lentejas",
+    name: "Buddha bowl de lentejas, calabaza asada y arroz integral",
+    description:
+      "Bol vegetal muy completo, rico en fibra y con una buena combinación de proteína vegetal e hidratos complejos.",
+    macros: { kcal: 680, protein: 28, carbs: 95, fat: 18 },
+    price: 3.9,
+    keywords: ["lentejas", "calabaza", "arroz", "bowl"],
+    ingredients: [
+      "80 g de lentejas cocidas",
+      "60 g de arroz integral en crudo",
+      "150 g de calabaza en dados",
+      "1 cucharada de aceite de oliva",
+      "Pimentón, comino, sal y pimienta"
+    ],
+    steps: [
+      "Cuece el arroz integral en agua con sal siguiendo las indicaciones del envase.",
+      "Coloca la calabaza en una bandeja, aliña con aceite, sal, pimienta y especias y hornea 20–25 minutos a 190 ºC.",
+      "Calienta suavemente las lentejas cocidas en un cazo con una pizca de sal.",
+      "Monta el bowl con base de arroz, lentejas y calabaza asada y termina con un chorrito de aceite en crudo."
+    ]
+  },
+  {
+    id: "ternera_wok_verduras",
+    name: "Wok de ternera con verduras y arroz basmati",
+    description:
+      "Plato rápido con carne de ternera salteada y verduras crujientes, ideal para cuando quieres algo sabroso pero equilibrado.",
+    macros: { kcal: 650, protein: 40, carbs: 70, fat: 20 },
+    price: 4.5,
+    keywords: ["ternera", "carne", "wok", "pimiento", "arroz"],
+    ingredients: [
+      "120 g de ternera en tiras (tipo filete fino)",
+      "70 g de arroz basmati en crudo",
+      "1/2 pimiento rojo",
+      "1/2 cebolla",
+      "1 zanahoria pequeña",
+      "1 cucharada de aceite de oliva o de sésamo",
+      "Salsa de soja baja en sal"
+    ],
+    steps: [
+      "Cuece el arroz basmati en agua con sal hasta que quede suelto.",
+      "Corta la ternera en tiras finas y las verduras en bastones o tiras.",
+      "Saltea la ternera a fuego fuerte con la mitad del aceite hasta que cambie de color y retírala.",
+      "En la misma sartén, saltea las verduras con el resto del aceite, añade la ternera de nuevo, un chorrito de salsa de soja y sirve sobre el arroz."
+    ]
+  },
+  {
+    id: "ternera_patata_horno",
+    name: "Ternera al horno con patata y zanahoria",
+    description:
+      "Receta sencilla al horno que combina carne de ternera con tubérculos, muy cómoda para preparar en bandeja única.",
+    macros: { kcal: 700, protein: 42, carbs: 65, fat: 26 },
+    price: 4.8,
+    keywords: ["ternera", "carne", "patata", "zanahoria", "horno"],
+    ingredients: [
+      "130 g de carne de ternera para guiso o filete grueso",
+      "200 g de patata",
+      "1 zanahoria grande",
+      "1 cucharada de aceite de oliva",
+      "Ajo, romero, sal y pimienta"
+    ],
+    steps: [
+      "Precalienta el horno a 190 ºC. Corta la patata y la zanahoria en trozos medianos.",
+      "Coloca las verduras en una bandeja, aliña con aceite, sal, pimienta y romero.",
+      "Añade la ternera salpimentada por encima o a un lado y hornea 25–30 minutos, dando la vuelta a mitad de cocción.",
+      "Deja reposar 5 minutos antes de servir para que la carne se asiente."
+    ]
+  },
+  {
+    id: "carne_picada_pasta",
+    name: "Pasta con carne picada de ternera y tomate",
+    description:
+      "Clásico plato de pasta con carne, fácil de adaptar a más raciones y muy saciante.",
+    macros: { kcal: 680, protein: 38, carbs: 80, fat: 22 },
+    price: 3.9,
+    keywords: ["ternera", "carne picada", "pasta", "tomate"],
+    ingredients: [
+      "80 g de pasta (blanca o integral)",
+      "100 g de carne picada de ternera",
+      "150 g de tomate triturado",
+      "1/2 cebolla",
+      "1 cucharadita de aceite de oliva",
+      "Orégano, sal y pimienta"
+    ],
+    steps: [
+      "Cuece la pasta en agua con sal hasta que esté al dente.",
+      "Sofríe la cebolla picada en una sartén con aceite hasta que quede transparente.",
+      "Añade la carne picada, deshaz los grumos con una cuchara y cocina hasta que esté hecha.",
+      "Incorpora el tomate triturado y las especias, cocina 8–10 minutos y mezcla con la pasta escurrida."
+    ]
+  },
+  {
+    id: "cerdo_lomo_arroz",
+    name: "Lomo de cerdo a la plancha con arroz y ensalada",
+    description:
+      "Plato sencillo con carne de cerdo magra, una ración de hidratos y un acompañamiento vegetal ligero.",
+    macros: { kcal: 600, protein: 38, carbs: 60, fat: 18 },
+    price: 3.6,
+    keywords: ["cerdo", "lomo", "arroz", "ensalada"],
+    ingredients: [
+      "140 g de lomo de cerdo fresco",
+      "60 g de arroz en crudo",
+      "Ensalada verde al gusto",
+      "1 cucharada de aceite de oliva",
+      "Sal, pimienta y ajo en polvo"
+    ],
+    steps: [
+      "Cuece el arroz en agua con sal hasta que esté tierno.",
+      "Salpimienta el lomo de cerdo y cocínalo a la plancha con un poco de aceite hasta dorar ambos lados.",
+      "Prepara una ensalada rápida con hojas verdes y el aliño que prefieras.",
+      "Sirve el lomo junto al arroz y la ensalada."
+    ]
+  },
+  {
+    id: "salteado_cerdo_verduras",
+    name: "Salteado de cerdo con verduras y noodles de arroz",
+    description:
+      "Receta con inspiración asiática, rápida de preparar y muy sabrosa.",
+    macros: { kcal: 650, protein: 35, carbs: 75, fat: 20 },
+    price: 4.1,
+    keywords: ["cerdo", "noodles", "verduras", "pimiento", "zanahoria"],
+    ingredients: [
+      "100 g de tiras de cerdo magro",
+      "70 g de noodles de arroz",
+      "1/2 pimiento verde",
+      "1 zanahoria",
+      "1/2 cebolla",
+      "1 cucharada de aceite de oliva o de sésamo",
+      "Salsa de soja baja en sal"
+    ],
+    steps: [
+      "Hidrata o cuece los noodles siguiendo las indicaciones del envase.",
+      "Corta las verduras en tiras finas y el cerdo en tiras.",
+      "Saltea el cerdo a fuego fuerte con la mitad del aceite y retira.",
+      "En la misma sartén, cocina las verduras con el resto del aceite, añade los noodles escurridos, el cerdo y un chorrito de salsa de soja."
+    ]
+  },
+  {
+    id: "hamburguesa_ternera_casera",
+    name: "Hamburguesa casera de ternera con pan integral y ensalada",
+    description:
+      "Versión más casera y controlada de una hamburguesa, con acompañamiento ligero.",
+    macros: { kcal: 720, protein: 40, carbs: 60, fat: 28 },
+    price: 4.3,
+    keywords: ["ternera", "hamburguesa", "pan", "lechuga", "tomate"],
+    ingredients: [
+      "130 g de carne picada de ternera",
+      "1 pan de hamburguesa integral",
+      "2 hojas de lechuga",
+      "2 rodajas de tomate",
+      "1 loncha de queso opcional",
+      "Sal, pimienta y ajo en polvo"
+    ],
+    steps: [
+      "Forma una hamburguesa con la carne picada y salpimienta por ambos lados.",
+      "Cocina la hamburguesa a la plancha hasta que esté bien hecha por dentro.",
+      "Tuesta ligeramente el pan y coloca la lechuga y el tomate en la base.",
+      "Añade la hamburguesa (y el queso si usas), cierra el pan y acompaña con una ensalada sencilla."
+    ]
+  },
+  {
+    id: "merluza_horno_verduras",
+    name: "Merluza al horno con verduras al papillote",
+    description:
+      "Plato ligero de pescado blanco con verduras, muy fácil de digerir y bajo en grasa.",
+    macros: { kcal: 430, protein: 32, carbs: 35, fat: 14 },
+    price: 3.8,
+    keywords: ["merluza", "pescado blanco", "verduras", "horno"],
+    ingredients: [
+      "150 g de lomos de merluza",
+      "1/2 calabacín",
+      "1/2 pimiento rojo",
+      "1/2 cebolla",
+      "1 cucharada de aceite de oliva",
+      "Sal, pimienta y hierbas provenzales"
+    ],
+    steps: [
+      "Precalienta el horno a 190 ºC.",
+      "Corta las verduras en tiras y colócalas sobre papel de horno o papel aluminio.",
+      "Pon la merluza encima, aliña con aceite, sal, pimienta y hierbas.",
+      "Cierra el paquete formando un papillote y hornea 15–18 minutos."
+    ]
+  },
+  {
+    id: "bacalao_garbanzos",
+    name: "Guiso rápido de bacalao con garbanzos y espinacas",
+    description:
+      "Receta de cuchara fácil que combina pescado con legumbres y hojas verdes.",
+    macros: { kcal: 560, protein: 40, carbs: 45, fat: 18 },
+    price: 4.2,
+    keywords: ["bacalao", "garbanzos", "espinacas", "guiso"],
+    ingredients: [
+      "120 g de bacalao fresco o desalado",
+      "120 g de garbanzos cocidos",
+      "50 g de espinacas frescas",
+      "150 g de tomate triturado",
+      "1 diente de ajo",
+      "1 cucharadita de aceite de oliva"
+    ],
+    steps: [
+      "Dora ligeramente el ajo picado en una cazuela con aceite.",
+      "Añade el tomate triturado y cocina 5–6 minutos.",
+      "Incorpora los garbanzos escurridos y el bacalao en trozos, cocina 6–8 minutos más.",
+      "Añade las espinacas casi al final, remueve hasta que se ablanden y ajusta de sal."
+    ]
+  },
+  {
+    id: "quinoa_pollo_bowl",
+    name: "Bowl de quinoa con pollo, maíz y aguacate",
+    description:
+      "Bol equilibrado con proteína magra, gras
+as saludables y un buen aporte de fibra.",
+    macros: { kcal: 640, protein: 38, carbs: 70, fat: 20 },
+    price: 4.0,
+    keywords: ["quinoa", "pollo", "maíz", "aguacate", "bowl"],
+    ingredients: [
+      "60 g de quinoa en crudo",
+      "120 g de pechuga de pollo",
+      "40 g de maíz dulce",
+      "1/4–1/2 aguacate",
+      "1 cucharada de aceite de oliva",
+      "Limón, sal y pimienta"
+    ],
+    steps: [
+      "Enjuaga la quinoa bajo el grifo y cuécela en agua con una pizca de sal hasta que esté tierna.",
+      "Corta el pollo en dados, salpimienta y cocínalo en una sartén con aceite hasta dorar.",
+      "En un bol, coloca como base la quinoa, añade el maíz, el pollo y el aguacate en láminas.",
+      "Aliña con aceite, limón, sal y pimienta antes de servir."
+    ]
+  },
+  {
+    id: "couscous_verduras_garbanzos",
+    name: "Cuscús con verduras asadas y garbanzos",
+    description:
+      "Opción vegetariana muy rápida de montar una vez tienes las verduras listas, ideal para batch cooking.",
+    macros: { kcal: 580, protein: 20, carbs: 85, fat: 14 },
+    price: 3.3,
+    keywords: ["cuscús", "garbanzos", "verduras", "calabacín", "pimiento"],
+    ingredients: [
+      "70 g de cuscús",
+      "120 g de garbanzos cocidos",
+      "1/2 calabacín",
+      "1/2 pimiento rojo",
+      "1/2 cebolla",
+      "1 cucharada de aceite de oliva",
+      "Comino, pimentón, sal y pimienta"
+    ],
+    steps: [
+      "Corta las verduras en dados, mézclalas con aceite y especias y ásalas 20 minutos a 190 ºC.",
+      "Hidrata el cuscús con agua caliente siguiendo las indicaciones del envase.",
+      "Mezcla el cuscús con los garbanzos escurridos y las verduras asadas.",
+      "Ajusta de sal, pimienta y especias antes de servir."
+    ]
+  },
+  {
+    id: "ensalada_pasta_atun_frio",
+    name: "Ensalada fría de pasta integral con atún y verduras",
+    description:
+      "Plato ideal para llevar en tupper, se toma frío y es muy saciante.",
+    macros: { kcal: 620, protein: 30, carbs: 80, fat: 16 },
+    price: 3.0,
+    keywords: ["pasta", "atún", "ensalada", "pepino", "maíz"],
+    ingredients: [
+      "80 g de pasta integral",
+      "1 lata de atún al natural",
+      "1/2 pepino",
+      "40 g de maíz dulce",
+      "Tomates cherry al gusto",
+      "1 cucharada de aceite de oliva y vinagre"
+    ],
+    steps: [
+      "Cuece la pasta en agua con sal, escúrrela y déjala enfriar.",
+      "Corta el pepino en dados y los tomates cherry por la mitad.",
+      "Mezcla en un bol la pasta fría, el atún escurrido, el maíz y las verduras.",
+      "Aliña con aceite, vinagre, sal y pimienta y deja en la nevera hasta el momento de comer."
+    ]
+  },
+  {
+    id: "burrito_pollo_frijoles",
+    name: "Burrito de pollo con frijoles y arroz",
+    description:
+      "Receta inspirada en la cocina mexicana, muy completa y fácil de adaptar en tamaño.",
+    macros: { kcal: 720, protein: 38, carbs: 85, fat: 20 },
+    price: 4.4,
+    keywords: ["pollo", "frijoles", "alubias", "arroz", "tortilla"],
+    ingredients: [
+      "1 tortilla grande de trigo o maíz",
+      "100 g de pechuga de pollo",
+      "50 g de arroz en crudo",
+      "60 g de frijoles o alubias cocidas",
+      "Lechuga y tomate al gusto",
+      "1 cucharadita de aceite de oliva"
+    ],
+    steps: [
+      "Cuece el arroz en agua con sal y reserva.",
+      "Cocina el pollo a la plancha en tiras con un poco de aceite, sal y especias.",
+      "Calienta ligeramente la tortilla en una sartén y colócala en un plato.",
+      "Rellena con arroz, frijoles, pollo, lechuga y tomate, enrolla doblando los extremos hacia dentro."
+    ]
+  },
+  {
+    id: "poke_salmon_arroz",
+    name: "Poke bowl de salmón, arroz y edamame",
+    description:
+      "Bol frío con inspiración hawaiana, muy completo y refrescante.",
+    macros: { kcal: 690, protein: 40, carbs: 75, fat: 22 },
+    price: 5.2,
+    keywords: ["salmón", "arroz", "edamame", "aguacate", "bowl"],
+    ingredients: [
+      "100 g de salmón fresco para consumir crudo o marinado",
+      "70 g de arroz (sushi o redondo)",
+      "50 g de edamame cocido",
+      "1/4 de aguacate",
+      "Salsa de soja baja en sal y semillas de sésamo"
+    ],
+    steps: [
+      "Cuece el arroz, enfríalo ligeramente y colócalo como base en un bol.",
+      "Corta el salmón en dados y marínalo brevemente con salsa de soja.",
+      "Añade el salmón, el edamame y el aguacate en láminas sobre el arroz.",
+      "Termina con un poco más de salsa de soja y semillas de sésamo."
+    ]
+  },
+  {
+    id: "revuelto_setas_huevos",
+    name: "Revuelto de huevos con setas y pan integral",
+    description:
+      "Plato rápido rico en proteína, perfecto para desayuno tardío o cena.",
+    macros: { kcal: 520, protein: 28, carbs: 40, fat: 22 },
+    price: 2.7,
+    keywords: ["huevo", "setas", "champiñones", "pan"],
+    ingredients: [
+      "2 huevos + 2 claras",
+      "100 g de setas o champiñones",
+      "1 cucharadita de aceite de oliva",
+      "2 rebanadas de pan integral",
+      "Sal, pimienta y perejil"
+    ],
+    steps: [
+      "Limpia y corta las setas en láminas.",
+      "Saltéalas en una sartén con aceite hasta que suelten el agua y se doren.",
+      "Bate los huevos y las claras, añade sal y pimienta y viértelos sobre las setas.",
+      "Remueve suavemente hasta que cuajen al punto que te guste y sirve con el pan tostado."
+    ]
+  },
+  {
+    id: "sandwich_pavo_queso",
+    name: "Sándwich integral de pavo, queso y tomate",
+    description:
+      "Opción rápida para media mañana o cena ligera, fácil de llevar.",
+    macros: { kcal: 430, protein: 26, carbs: 40, fat: 14 },
+    price: 2.3,
+    keywords: ["pavo", "queso", "pan", "sándwich", "tomate"],
+    ingredients: [
+      "2–3 rebanadas de pan integral",
+      "60 g de fiambre de pavo o pechuga a la plancha",
+      "1 loncha de queso tipo sándwich",
+      "Rodajas de tomate y hojas de lechuga",
+      "Mostaza o yogur como salsa ligera"
+    ],
+    steps: [
+      "Tuesta ligeramente el pan si lo prefieres crujiente.",
+      "Coloca el pavo, el queso, el tomate y la lechuga entre las rebanadas.",
+      "Añade un poco de mostaza o yogur como salsa.",
+      "Corta por la mitad si quieres que sea más fácil de comer o llevar."
+    ]
+  },
+  {
+    id: "crema_calabaza_garbanzos",
+    name: "Crema de calabaza con topping de garbanzos crujientes",
+    description:
+      "Plato de cuchara suave y reconfortante, con un extra de proteína vegetal.",
+    macros: { kcal: 450, protein: 16, carbs: 60, fat: 14 },
+    price: 2.5,
+    keywords: ["calabaza", "garbanzos", "crema", "sopa"],
+    ingredients: [
+      "250 g de calabaza en dados",
+      "1 zanahoria pequeña",
+      "1/2 cebolla",
+      "100 g de garbanzos cocidos",
+      "1 cucharada de aceite de oliva",
+      "Caldo o agua, sal y pimienta"
+    ],
+    steps: [
+      "Sofríe la cebolla y la zanahoria picadas en una olla con un poco de aceite.",
+      "Añade la calabaza en dados, cubre con caldo o agua y cocina hasta que esté tierna.",
+      "Tritura todo hasta obtener una crema suave y ajusta de sal.",
+      "Saltea los garbanzos con una pizca de aceite y pimentón y úsalo como topping crujiente."
+    ]
+  },
+  {
+    id: "pizza_tortilla_integral",
+    name: "Pizza rápida con base de tortilla integral",
+    description:
+      "Truco para quitarse el antojo de pizza usando una tortilla integral como base, lista en pocos minutos.",
+    macros: { kcal: 520, protein: 26, carbs: 55, fat: 18 },
+    price: 2.9,
+    keywords: ["tortilla", "pizza", "tomate", "queso", "jamón"],
+    ingredients: [
+      "1 tortilla integral grande",
+      "3–4 cucharadas de tomate triturado o salsa de tomate ligera",
+      "30–40 g de queso rallado",
+      "Lonchas finas de jamón cocido, pavo o verduras al gusto",
+      "Orégano seco"
+    ],
+    steps: [
+      "Coloca la tortilla sobre una bandeja de horno o sartén.",
+      "Unta la superficie con tomate, reparte el queso y los toppings elegidos.",
+      "Espolvorea orégano por encima.",
+      "Hornea o cocina en sartén tapada a fuego bajo hasta que el queso se derrita y la base quede crujiente."
+    ]
+  },
+  {
+    id: "fajitas_ternera_pimientos",
+    name: "Fajitas de ternera con pimientos y cebolla",
+    description:
+      "Receta muy sabrosa para comer ternera en formato fajita, fácil de compartir.",
+    macros: { kcal: 680, protein: 36, carbs: 70, fat: 24 },
+    price: 4.6,
+    keywords: ["ternera", "fajitas", "tortilla", "pimiento", "cebolla"],
+    ingredients: [
+      "120 g de tiras de ternera",
+      "2 tortillas de trigo o maíz",
+      "1/2 pimiento rojo y 1/2 pimiento verde",
+      "1/2 cebolla",
+      "1 cucharada de aceite de oliva",
+      "Especias tipo fajita, sal y pimienta"
+    ],
+    steps: [
+      "Corta la ternera y las verduras en tiras finas.",
+      "Saltea primero la ternera a fuego fuerte con parte del aceite y retira.",
+      "En la misma sartén, cocina los pimientos y la cebolla con el resto del aceite hasta que estén tiernos.",
+      "Añade la ternera de nuevo, las especias y mezcla. Rellena las tortillas y ciérralas formando fajitas."
+    ]
+  },
+  {
+    id: "tortilla_patata_ligera",
+    name: "Tortilla de patata ligera con cebolla",
+    description:
+      "Versión más ligera de la clásica tortilla de patata, usando menos aceite y más clara de huevo.",
+    macros: { kcal: 540, protein: 22, carbs: 60, fat: 20 },
+    price: 2.2,
+    keywords: ["patata", "huevo", "cebolla", "tortilla"],
+    ingredients: [
+      "250 g de patata",
+      "1/2 cebolla",
+      "2 huevos + 2 claras",
+      "1–2 cucharadas de aceite de oliva",
+      "Sal"
+    ],
+    steps: [
+      "Pela y corta las patatas en láminas finas y la cebolla en juliana.",
+      "Cocina patata y cebolla en una sartén con aceite a fuego medio, tapado, removiendo de vez en cuando.",
+      "Bate los huevos y las claras con una pizca de sal y mezcla con las patatas escurridas.",
+      "Cuaja la tortilla en una sartén antiadherente por ambos lados hasta que tenga el punto de cocción que te guste."
+    ]
+  },
+  {
+    id: "yogur_fruta_granola",
+    name: "Bol de yogur alto en proteína con fruta y granola casera",
+    description:
+      "Desayuno o merienda muy rápido, con buena cantidad de proteína y algo crujiente gracias a la granola.",
+    macros: { kcal: 380, protein: 24, carbs: 40, fat: 10 },
+    price: 1.9,
+    keywords: ["yogur", "fruta", "granola", "desayuno"],
+    ingredients: [
+      "200 g de yogur natural alto en proteína",
+      "1 pieza de fruta (manzana, pera o plátano)",
+      "20–25 g de granola o copos de avena tostados",
+      "Canela o cacao en polvo opcional"
+    ],
+    steps: [
+      "Coloca el yogur en un bol como base.",
+      "Corta la fruta en dados o rodajas y añádela por encima.",
+      "Agrega la granola o la avena tostada para dar textura crujiente.",
+      "Termina con canela o un poco de cacao si quieres más sabor."
+    ]
+  }
+];
+
 
     function generarReceta() {
       const kcalInput = document.getElementById("kcal").value.trim();
