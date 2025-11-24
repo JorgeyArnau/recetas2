@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Nutri Evolve AI – Dietas inteligentes según tus kcal</title>
+  <title>Nutri Evolve – Recetas ajustadas a tus kcal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Fuentes similares a la plantilla (serif + sans) -->
+  <!-- Fuentes estilo plantilla -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -41,8 +41,6 @@
       max-width: 100%;
       display: block;
     }
-
-    /* CONTENEDOR GENERAL */
 
     .container {
       width: 100%;
@@ -236,7 +234,7 @@
       transform: rotate(-8deg);
     }
 
-    /* CÍRCULOS DE PASOS */
+    /* CÍRCULOS PASOS */
 
     .steps-circles-section {
       background-color: var(--bg-light);
@@ -281,7 +279,7 @@
       color: var(--accent);
     }
 
-    /* SECCIÓN CARDS DE PASOS */
+    /* CARDS PASOS */
 
     .steps-cards-section {
       padding: 48px 0 40px;
@@ -339,7 +337,7 @@
       color: var(--text-muted);
     }
 
-    /* GENERADOR DE DIETA (SIMULACIÓN) */
+    /* GENERADOR RECETA */
 
     .generator-section {
       padding: 40px 0 56px;
@@ -373,7 +371,7 @@
     }
 
     .generator-form input,
-    .generator-form select {
+    .generator-form textarea {
       width: 100%;
       padding: 8px 10px;
       border-radius: 4px;
@@ -383,11 +381,23 @@
       background-color: #fbfaf8;
     }
 
+    .generator-form textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
     .generator-hint {
       font-size: 12px;
       color: var(--text-muted);
       margin-top: -6px;
       margin-bottom: 14px;
+    }
+
+    .macros-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
     .generator-result {
@@ -404,6 +414,13 @@
       margin-bottom: 6px;
     }
 
+    .generator-result h4 {
+      font-family: "Playfair Display", serif;
+      font-size: 16px;
+      margin-top: 12px;
+      margin-bottom: 4px;
+    }
+
     .macros-row {
       display: flex;
       flex-wrap: wrap;
@@ -413,21 +430,23 @@
       color: var(--text-muted);
     }
 
-    .generator-meal {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed #e0d7cd;
-    }
-
-    .generator-meal strong {
-      font-family: "Playfair Display", serif;
-      font-size: 15px;
-    }
-
     .generator-price {
       font-size: 12px;
       color: var(--text-muted);
       margin-top: 8px;
+    }
+
+    .generator-result ul {
+      padding-left: 18px;
+      margin-bottom: 4px;
+    }
+
+    .generator-result ol {
+      padding-left: 18px;
+    }
+
+    .generator-result li {
+      margin-bottom: 4px;
     }
 
     /* FOOTER */
@@ -584,15 +603,15 @@
         <div class="logo-zone">
           <div class="logo-circle">NE</div>
           <div>
-            <div class="logo-text-main">Nutri Evolve AI</div>
-            <div class="logo-text-sub">Tu dieta diaria creada por inteligencia artificial</div>
+            <div class="logo-text-main">Nutri Evolve</div>
+            <div class="logo-text-sub">Un plato saludable ajustado a tus kcal</div>
           </div>
         </div>
         <nav>
           <ul>
             <li><a href="#inicio" class="active">Inicio</a></li>
             <li><a href="#como-funciona">Cómo funciona</a></li>
-            <li><a href="#generador">Probar ahora</a></li>
+            <li><a href="#generador">Generar receta</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
         </nav>
@@ -600,154 +619,176 @@
     </div>
   </header>
 
-  <!-- HERO VERDE -->
+  <!-- HERO -->
   <section class="hero" id="inicio">
     <div class="container hero-inner">
       <div>
         <div class="hero-eyebrow">Hi!</div>
-        <h1 class="hero-title">Tu plan de comidas, listo en menos de 1 minuto.</h1>
+        <h1 class="hero-title">Escribe tus kcal y te proponemos una receta.</h1>
         <p class="hero-text">
-          Introduce las <span class="hero-highlight">kcal que quieres comer</span> o los
-          <span class="hero-highlight">alimentos que tienes en casa</span>. Nuestra web, conectada con ChatGPT,
-          genera al instante un día completo de comidas saludables con recetas fáciles, macros aproximados
-          y un coste pensado para que comer bien también sea barato.
+          Indicas las <span class="hero-highlight">calorías que quieres que tenga tu plato</span>,
+          tus <span class="hero-highlight">macros objetivo</span> y, si quieres, los
+          <span class="hero-highlight">alimentos que tienes en casa</span>.
+          La web te sugiere una receta sencilla y saludable con cantidades orientativas,
+          macros aproximados y pasos claros para prepararla.
         </p>
         <ul class="hero-list">
-          <li>Dietas personalizadas según tus calorías objetivo y nivel de actividad.</li>
-          <li>Recetas claras paso a paso, con fotos representativas para que no te pierdas.</li>
-          <li>Ideas realistas para el día a día: rápidas, sencillas y con ingredientes normales.</li>
+          <li>Recetas pensadas para el día a día: rápidas, realistas y con ingredientes normales.</li>
+          <li>Un solo plato por vez, para que puedas repetir la herramienta cuando quieras.</li>
+          <li>Precio aproximado por ración si no indicas alimentos concretos.</li>
         </ul>
         <div class="hero-cta">
           <button class="btn-primary" onclick="document.getElementById('generador').scrollIntoView({behavior:'smooth'})">
-            Generar mi dieta de hoy
+            Probar ahora
           </button>
-          <p class="hero-note">Sin registro, solo prueba cómo funcionaría tu día de comidas.</p>
+          <p class="hero-note">Tardas menos de un minuto en tener una idea clara de qué comer.</p>
         </div>
       </div>
 
       <div class="hero-media">
         <div class="hero-image-wrapper">
-          <!-- Cambia la imagen si quieres otra -->
           <img src="https://images.pexels.com/photos/3298637/pexels-photo-3298637.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Persona cocinando saludable">
         </div>
-        <div class="hero-badge">AI</div>
+        <div class="hero-badge">Go!</div>
       </div>
     </div>
   </section>
 
-  <!-- CÍRCULOS DE PASOS -->
+  <!-- CÍRCULOS PASOS -->
   <section class="steps-circles-section" id="como-funciona">
     <div class="container">
       <div class="steps-circles">
         <div class="step-circle">
           <div>
             <span>Paso 1</span>
-            Elige tus kcal o los alimentos que tienes.
+            Elige kcal, macros y alimentos que tengas.
           </div>
         </div>
         <div class="steps-arrow">➜</div>
         <div class="step-circle">
           <div>
             <span>Paso 2</span>
-            La IA organiza tu día en 3–5 comidas equilibradas.
+            El sistema busca la receta que mejor encaja con tus datos.
           </div>
         </div>
         <div class="steps-arrow">➜</div>
         <div class="step-circle">
           <div>
             <span>Paso 3</span>
-            Sigues las recetas con fotos, macros y precio estimado.
+            Cocina siguiendo los pasos y revisa macros y precio aproximado.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CARDS DE PASOS CON IMÁGENES -->
+  <!-- CARDS PASOS -->
   <section class="steps-cards-section">
     <div class="container steps-cards-grid">
-      <!-- CARD 1 -->
       <article class="step-card">
         <div class="step-card-image">
           <img src="https://images.pexels.com/photos/8478058/pexels-photo-8478058.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Persona usando móvil en la cocina">
         </div>
         <div class="step-card-body">
-          <div class="step-card-kicker">Paso 1 · Configura tu día</div>
-          <h2 class="step-card-title">Dinos cuántas kcal quieres comer hoy</h2>
+          <div class="step-card-kicker">Paso 1 · Define tu objetivo</div>
+          <h2 class="step-card-title">Ponle un número a tu plato</h2>
           <p class="step-card-text">
-            Introduces tus calorías objetivo, tu número de comidas y, si quieres, marcas los alimentos que
-            tienes por casa. La IA usa esa información como punto de partida, igual que haría un nutricionista,
-            pero en cuestión de segundos.
+            Escribes cuántas kcal quieres que tenga la comida y, si lo tienes claro,
+            añades tus gramos aproximados de proteína, hidratos y grasas.
+            También puedes indicar los alimentos que quieres aprovechar.
           </p>
-          <p class="step-card-meta">Ideal si quieres controlar peso, recomposición corporal o simplemente ordenar tus comidas.</p>
+          <p class="step-card-meta">
+            Perfecto si estás en déficit, recomposición o simplemente quieres un plato equilibrado.
+          </p>
         </div>
       </article>
 
-      <!-- CARD 2 -->
       <article class="step-card">
         <div class="step-card-image">
           <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mesa con ingredientes saludables">
         </div>
         <div class="step-card-body">
-          <div class="step-card-kicker">Paso 2 · IA conectada a ChatGPT</div>
-          <h2 class="step-card-title">Generamos un plan completo con macros</h2>
+          <div class="step-card-kicker">Paso 2 · Selección de receta</div>
+          <h2 class="step-card-title">Buscamos la opción que mejor encaja</h2>
           <p class="step-card-text">
-            El sistema reparte esas kcal entre tus comidas, propone recetas coherentes entre sí
-            y calcula una estimación de <strong>proteínas, hidratos y grasas</strong> para que veas el
-            equilibrio global del día de un vistazo.
+            A partir de tus datos, el sistema compara varias recetas y elige la que
+            más se aproxima a tus kcal y macros, intentando utilizar al menos uno de
+            los alimentos que has escrito.
           </p>
-          <p class="step-card-meta">Tendrás una estructura clara, sin menús imposibles ni platos que parezcan de restaurante.</p>
+          <p class="step-card-meta">
+            Así evitas tirar comida y tienes una propuesta clara en segundos.
+          </p>
         </div>
       </article>
 
-      <!-- CARD 3 -->
       <article class="step-card">
         <div class="step-card-image">
           <img src="https://images.pexels.com/photos/5591719/pexels-photo-5591719.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Plato de comida saludable servido">
         </div>
         <div class="step-card-body">
-          <div class="step-card-kicker">Paso 3 · Cocina sin complicarte</div>
-          <h2 class="step-card-title">Recetas paso a paso + precio aproximado</h2>
+          <div class="step-card-kicker">Paso 3 · Cocina y ajusta</div>
+          <h2 class="step-card-title">Sigue los pasos y revisa macros</h2>
           <p class="step-card-text">
-            Cada receta viene con instrucciones sencillas, numeradas y sin texto de relleno. Además,
-            verás un <strong>precio estimado por ración</strong> para que puedas comer sano sin
-            disparar el presupuesto.
+            Verás cantidades orientativas, macros aproximados y pasos numerados para
+            que puedas cocinar sin complicarte. Si no has indicado alimentos, también
+            tendrás un precio estimado por ración.
           </p>
-          <p class="step-card-meta">Si algo no encaja, vuelves atrás, cambias las kcal o ingredientes y generas una versión nueva.</p>
+          <p class="step-card-meta">
+            Si la receta no te convence, solo tienes que cambiar los datos y generar otra idea.
+          </p>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- GENERADOR SIMPLIFICADO -->
+  <!-- GENERADOR DE RECETA -->
   <section class="generator-section" id="generador">
     <div class="container generator-layout">
       <div>
-        <h2 class="generator-title">Prueba cómo podría ser tu día de comidas</h2>
+        <h2 class="generator-title">Genera una receta ajustada a tus números</h2>
         <p class="generator-subtitle">
-          Esta es una versión simplificada que reparte tus kcal entre 3 comidas principales y 2 snacks.
-          En un proyecto real, aquí conectarías tu clave de la API de ChatGPT para ajustar aún más el plan.
+          Introduce las kcal que quieres para el plato, tus macros objetivo (si los sabes)
+          y los alimentos que tienes a mano. El sistema te propondrá una de las recetas disponibles
+          que mejor se adapte a lo que has puesto.
         </p>
 
-        <form class="generator-form" onsubmit="event.preventDefault(); generarDieta();">
-          <label for="kcal">Kcal que quieres comer hoy</label>
-          <input type="number" id="kcal" min="1200" max="4500" placeholder="Ej. 2300" required />
-          <p class="generator-hint">Usaremos estas kcal como referencia para repartirlas en tus comidas.</p>
+        <form class="generator-form" onsubmit="event.preventDefault(); generarReceta();">
+          <label for="kcal">Kcal objetivo del plato</label>
+          <input type="number" id="kcal" placeholder="Ej. 650 (puede ser cualquier valor)" />
+          <p class="generator-hint">
+            No es obligatorio, pero ayuda a ajustar mejor la propuesta.
+          </p>
 
-          <label for="nivel">Nivel de actividad</label>
-          <select id="nivel">
-            <option value="bajo">Bajo – día tranquilo</option>
-            <option value="medio" selected>Medio – entreno suave</option>
-            <option value="alto">Alto – doble sesión o mucho movimiento</option>
-          </select>
+          <label>Macros objetivo del plato (opcional)</label>
+          <div class="macros-grid">
+            <div>
+              <input type="number" id="prot" placeholder="Prote (g)" />
+            </div>
+            <div>
+              <input type="number" id="carb" placeholder="Hidratos (g)" />
+            </div>
+            <div>
+              <input type="number" id="fat" placeholder="Grasas (g)" />
+            </div>
+          </div>
 
-          <button type="submit" class="btn-primary">Generar ejemplo de menú</button>
+          <label for="alimentos">Alimentos que tienes en casa (opcional)</label>
+          <textarea id="alimentos" placeholder="Ej. pollo, arroz integral, tomate, garbanzos..."></textarea>
+          <p class="generator-hint">
+            Intentaremos usar al menos uno de los alimentos que escribas. Si lo dejas vacío,
+            te propondremos igualmente una receta y verás un precio aproximado por ración.
+          </p>
+
+          <button type="submit" class="btn-primary">Generar receta</button>
         </form>
       </div>
 
       <aside class="generator-result" id="resultado">
-        <h3>Tu plan aparecerá aquí</h3>
-        <p>Introduce tus kcal y haz clic en “Generar ejemplo de menú” para ver un día completo con macros aproximados.</p>
+        <h3>Tu receta aparecerá aquí</h3>
+        <p>
+          Rellena alguno de los campos de la izquierda y haz clic en “Generar receta”.
+          Obtendrás un plato con macros aproximados, ingredientes orientativos y pasos detallados.
+        </p>
       </aside>
     </div>
   </section>
@@ -757,18 +798,18 @@
     <div class="container footer-layout">
       <div>
         <div class="footer-heart">❤️</div>
-        <h2 class="footer-title">Recibe ideas de menús saludables y baratos</h2>
+        <h2 class="footer-title">¿Te gustaría recibir más ideas de platos?</h2>
         <p class="footer-text">
-          Estamos construyendo una herramienta pensada para personas reales: estudiantes, deportistas,
-          gente que trabaja muchas horas y quiere tener la comida resuelta sin vivir a base de comida rápida.
-          Déjanos tu correo y te avisaremos cuando la versión completa esté lista.
+          Estamos diseñando una herramienta para que organizar tus comidas sea tan fácil como
+          escribir unas cuantas kcal y los alimentos que tienes en la nevera. Si te interesa,
+          déjanos tu correo y te avisaremos cuando haya novedades.
         </p>
         <form class="footer-form">
           <label for="email-footer">Email *</label>
           <input type="email" id="email-footer" placeholder="Tu correo electrónico" />
           <div class="footer-checkbox">
             <input type="checkbox" id="acepto" />
-            <label for="acepto">Sí, acepto recibir novedades sobre la app.</label>
+            <label for="acepto">Sí, acepto recibir novedades sobre la herramienta.</label>
           </div>
           <button type="button" class="btn-footer">Suscribirme ahora</button>
         </form>
@@ -780,97 +821,356 @@
     </div>
 
     <div class="footer-bottom">
-      © <span id="year"></span> Nutri Evolve AI · Proyecto demo de dietas generadas con IA.
+      © <span id="year"></span> Nutri Evolve · Demo de recetas ajustadas a tus objetivos.
     </div>
   </footer>
 
   <script>
-    // Año footer
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Generador muy simplificado solo para ejemplo visual
-    function generarDieta() {
-      const kcalInput = document.getElementById("kcal");
-      const nivel = document.getElementById("nivel").value;
+    // Base de 10 recetas
+    const recipes = [
+      {
+        id: "pollo_arroz",
+        name: "Bowl de pollo y arroz integral con verduras",
+        description:
+          "Un plato completo con proteína magra, hidratos de absorción lenta y verduras saciantes, perfecto para después de entrenar.",
+        macros: { kcal: 620, protein: 45, carbs: 70, fat: 16 },
+        price: 3.8,
+        keywords: ["pollo", "arroz", "arroz integral", "zanahoria", "calabacín"],
+        ingredients: [
+          "130 g de pechuga de pollo",
+          "70 g de arroz integral en crudo",
+          "1/2 calabacín",
+          "1 zanahoria pequeña",
+          "1 cucharada de aceite de oliva (10 g)",
+          "Sal, pimienta y especias al gusto (pimentón, ajo en polvo…)"],
+        steps: [
+          "Cuece el arroz integral en abundante agua con una pizca de sal siguiendo las instrucciones del envase.",
+          "Mientras tanto, corta el pollo en dados pequeños y salpiméntalo. Saltea el pollo en una sartén con la mitad del aceite hasta que quede dorado por fuera y bien hecho por dentro.",
+          "Lava y corta el calabacín y la zanahoria en dados finos. Saltéalos en la misma sartén con el resto del aceite durante 4–5 minutos, hasta que queden tiernos pero todavía con algo de textura.",
+          "Escurre el arroz y mézclalo en un bol con las verduras salteadas. Coloca el pollo por encima, añade tus especias favoritas y ajusta de sal antes de servir."
+        ]
+      },
+      {
+        id: "tostada_aguacate",
+        name: "Tostadas integrales con aguacate y huevo a la plancha",
+        description:
+          "Desayuno o cena rápida con buena cantidad de proteína y grasas saludables, muy fácil de repetir a lo largo de la semana.",
+        macros: { kcal: 520, protein: 26, carbs: 45, fat: 24 },
+        price: 2.6,
+        keywords: ["aguacate", "huevo", "pan", "tostada"],
+        ingredients: [
+          "2 rebanadas de pan integral (60–70 g)",
+          "1/2 aguacate maduro",
+          "2 huevos",
+          "1 cucharadita de aceite de oliva",
+          "Sal, pimienta y zumo de limón al gusto"
+        ],
+        steps: [
+          "Tuesta las rebanadas de pan integral hasta que queden crujientes por fuera pero todavía tiernas por dentro.",
+          "En un bol pequeño, aplasta el aguacate con un tenedor. Añade una pizca de sal, pimienta y unas gotas de limón para que mantenga el color.",
+          "Calienta una sartén antiadherente con un poquito de aceite y cocina los huevos a la plancha o a la vista, dejando la yema al punto que prefieras.",
+          "Unta el pan con el aguacate, coloca un huevo sobre cada tostada y termina con un poco más de pimienta o tus especias favoritas."
+        ]
+      },
+      {
+        id: "pasta_atun",
+        name: "Pasta integral con atún y salsa de tomate casera rápida",
+        description:
+          "Plato muy sencillo y saciante que combina hidratos complejos con proteína de calidad, ideal para días ajetreados.",
+        macros: { kcal: 640, protein: 36, carbs: 82, fat: 14 },
+        price: 3.0,
+        keywords: ["pasta", "atún", "tomate"],
+        ingredients: [
+          "80 g de pasta integral en crudo",
+          "1 lata de atún al natural (aprox. 80 g escurridos)",
+          "150 g de tomate triturado o salsa de tomate sencilla",
+          "1 diente de ajo",
+          "1 cucharadita de aceite de oliva",
+          "Orégano seco, sal y pimienta"
+        ],
+        steps: [
+          "Cuece la pasta integral en agua hirviendo con sal hasta que quede al dente. Reserva un poco del agua de cocción.",
+          "En una sartén, sofríe el ajo picado con el aceite a fuego medio sin que llegue a quemarse.",
+          "Añade el tomate triturado, una pizca de sal, pimienta y orégano. Cocina 6–8 minutos hasta que la salsa espese ligeramente.",
+          "Incorpora el atún escurrido y desmigado a la salsa, mezcla y agrega la pasta escurrida. Si queda demasiado espeso, añade una o dos cucharadas del agua de cocción."
+        ]
+      },
+      {
+        id: "ensalada_garbanzos",
+        name: "Ensalada completa de garbanzos con verduras y feta",
+        description:
+          "Una opción fresca y rápida que puedes dejar preparada con antelación, rica en fibra y proteína vegetal.",
+        macros: { kcal: 540, protein: 24, carbs: 56, fat: 20 },
+        price: 3.2,
+        keywords: ["garbanzos", "pepino", "tomate", "ensalada"],
+        ingredients: [
+          "160 g de garbanzos cocidos escurridos",
+          "1 tomate grande o 6 tomates cherry",
+          "1/2 pepino",
+          "30 g de queso feta o queso fresco",
+          "1 cucharada de aceite de oliva",
+          "Zumo de limón, sal, pimienta y orégano seco"
+        ],
+        steps: [
+          "Aclara los garbanzos bajo el grifo y escúrrelos bien para que no añadan líquido extra a la ensalada.",
+          "Corta el tomate y el pepino en dados pequeños. Si usas tomates cherry, pártelos por la mitad.",
+          "En un bol grande, mezcla garbanzos, tomate y pepino. Aliña con el aceite de oliva, el zumo de limón, sal, pimienta y orégano.",
+          "Desmenuza el queso por encima justo antes de servir para que mantenga su textura."
+        ]
+      },
+      {
+        id: "tofu_brocoli",
+        name: "Salteado de tofu con brócoli y arroz",
+        description:
+          "Receta vegetariana alta en proteína, con buena cantidad de fibra y muy fácil de adaptar a diferentes cantidades.",
+        macros: { kcal: 610, protein: 32, carbs: 70, fat: 18 },
+        price: 3.7,
+        keywords: ["tofu", "brócoli", "arroz"],
+        ingredients: [
+          "100 g de tofu firme",
+          "70 g de arroz (blanco o integral) en crudo",
+          "150 g de brócoli en ramilletes",
+          "1 cucharada de salsa de soja baja en sal",
+          "1 cucharada de aceite de oliva o de sésamo suave",
+          "Ajo en polvo, pimienta y semillas de sésamo (opcional)"
+        ],
+        steps: [
+          "Cuece el arroz en agua con una pizca de sal hasta que esté en su punto. Reserva.",
+          "Corta el tofu en dados y sécalo con papel de cocina para que se dore mejor.",
+          "Saltea el tofu en una sartén amplia con la mitad del aceite hasta que los bordes estén dorados.",
+          "Añade el brócoli en ramilletes pequeños, el resto del aceite y un chorrito de agua. Cocina 4–5 minutos y, al final, incorpora la salsa de soja y las especias. Sirve el salteado sobre el arroz."
+        ]
+      },
+      {
+        id: "wrap_pavo",
+        name: "Wrap integral de pavo, hummus y verduras crujientes",
+        description:
+          "Opción muy práctica para comer fuera de casa: se prepara en pocos minutos y se transporta bien.",
+        macros: { kcal: 500, protein: 30, carbs: 50, fat: 16 },
+        price: 3.1,
+        keywords: ["pavo", "hummus", "wrap", "tortilla"],
+        ingredients: [
+          "1 tortilla integral grande tipo wrap",
+          "60–70 g de fiambre de pavo de buena calidad o pechuga de pavo a la plancha",
+          "30 g de hummus",
+          "Hojas de lechuga o espinaca fresca",
+          "Tiras de zanahoria y pepino",
+          "Pimienta y un chorrito de limón"
+        ],
+        steps: [
+          "Coloca la tortilla integral abierta sobre un plato o tabla.",
+          "Unta el centro con el hummus dejando los bordes libres para poder cerrar el wrap.",
+          "Añade las lonchas de pavo, la lechuga o espinaca y las tiras de zanahoria y pepino.",
+          "Dobla los laterales hacia dentro y enrolla desde la parte inferior hasta formar un cilindro compacto."
+        ]
+      },
+      {
+        id: "avena_platano",
+        name: "Avena cremosa con plátano y frutos rojos",
+        description:
+          "Un desayuno caliente y saciante, ideal para días fríos o para recuperar energía después de entrenar por la mañana.",
+        macros: { kcal: 480, protein: 20, carbs: 72, fat: 10 },
+        price: 1.8,
+        keywords: ["avena", "plátano", "frutos rojos"],
+        ingredients: [
+          "50 g de copos de avena",
+          "250 ml de leche o bebida vegetal",
+          "1 plátano mediano",
+          "Un puñado de frutos rojos (frescos o congelados)",
+          "Canela en polvo al gusto"
+        ],
+        steps: [
+          "Coloca la avena y la leche en un cazo a fuego medio, removiendo de vez en cuando para que no se pegue.",
+          "Cuando empiece a espesar, baja un poco el fuego y cocina 3–4 minutos más hasta obtener una textura cremosa.",
+          "Sirve en un bol y añade el plátano en rodajas y los frutos rojos por encima.",
+          "Termina con un poco de canela y, si lo necesitas, una cucharadita de miel o edulcorante."
+        ]
+      },
+      {
+        id: "salmon_patata",
+        name: "Salmón al horno con patata asada y ensalada verde",
+        description:
+          "Plato muy completo con grasas saludables, hidratos y vegetales, perfecto para una comida tranquila.",
+        macros: { kcal: 700, protein: 38, carbs: 60, fat: 30 },
+        price: 5.0,
+        keywords: ["salmón", "patata", "ensalada"],
+        ingredients: [
+          "140 g de lomo de salmón",
+          "200 g de patata",
+          "1 cucharada de aceite de oliva",
+          "Mezcla de hojas verdes (rúcula, lechuga, espinaca…) ",
+          "Zumo de limón, sal y pimienta"
+        ],
+        steps: [
+          "Precalienta el horno a 190 ºC. Lava las patatas, córtalas en gajos y mézclalas con un poco de aceite, sal y pimienta.",
+          "Coloca las patatas en una bandeja y hornéalas 20–25 minutos, dándoles la vuelta a mitad de tiempo.",
+          "Añade el salmón a la bandeja, salpimiéntalo y riégalo con un poco de limón. Hornea 10–12 minutos más, según grosor.",
+          "Sirve el salmón con las patatas asadas y una ensalada verde aliñada de forma sencilla."
+        ]
+      },
+      {
+        id: "tortilla_espinacas",
+        name: "Tortilla de claras con espinacas y queso fresco",
+        description:
+          "Opción ligera pero alta en proteína, ideal para cenas en las que quieres algo rápido pero saciante.",
+        macros: { kcal: 430, protein: 35, carbs: 18, fat: 20 },
+        price: 2.4,
+        keywords: ["huevo", "claras", "espinacas", "queso"],
+        ingredients: [
+          "3 claras de huevo + 1 huevo entero",
+          "60 g de espinacas frescas",
+          "40 g de queso fresco o tipo burgos",
+          "1 cucharadita de aceite de oliva",
+          "Sal y pimienta"
+        ],
+        steps: [
+          "Bate las claras con el huevo entero en un bol y añade una pizca de sal y pimienta.",
+          "Saltea ligeramente las espinacas en una sartén con un poco de aceite hasta que se reduzcan de volumen.",
+          "Vierte la mezcla de huevo sobre las espinacas y reparte bien para que se integren.",
+          "Cuando empiece a cuajar, añade el queso desmenuzado, pliega la tortilla y termina de cocinar hasta que tenga la textura que prefieras."
+        ]
+      },
+      {
+        id: "buddha_lentejas",
+        name: "Buddha bowl de lentejas, calabaza asada y arroz",
+        description:
+          "Bol vegetal muy completo, rico en fibra y con una buena combinación de proteína vegetal e hidratos complejos.",
+        macros: { kcal: 680, protein: 28, carbs: 95, fat: 18 },
+        price: 3.9,
+        keywords: ["lentejas", "calabaza", "arroz"],
+        ingredients: [
+          "80 g de lentejas cocidas",
+          "60 g de arroz integral en crudo",
+          "150 g de calabaza en dados",
+          "1 cucharada de aceite de oliva",
+          "Pimentón, comino, sal y pimienta"
+        ],
+        steps: [
+          "Cuece el arroz integral en agua con sal siguiendo las indicaciones del envase.",
+          "Coloca la calabaza en dados en una bandeja, aliña con aceite, sal, pimienta y las especias, y hornea 20–25 minutos a 190 ºC.",
+          "Calienta ligeramente las lentejas cocidas en un cazo con un poco de agua o caldo y una pizca de sal.",
+          "Monta el bowl colocando una base de arroz, las lentejas a un lado y la calabaza asada al otro. Termina con un chorrito de aceite en crudo."
+        ]
+      }
+    ];
+
+    function generarReceta() {
+      const kcalInput = document.getElementById("kcal").value.trim();
+      const protInput = document.getElementById("prot").value.trim();
+      const carbInput = document.getElementById("carb").value.trim();
+      const fatInput = document.getElementById("fat").value.trim();
+      const alimentosInput = document.getElementById("alimentos").value.trim().toLowerCase();
       const resultado = document.getElementById("resultado");
 
-      const kcal = parseInt(kcalInput.value, 10);
-      if (isNaN(kcal) || kcal < 1200) {
-        resultado.innerHTML =
-          "<h3>Revisa los datos</h3><p>Introduce un valor de calorías razonable (a partir de 1200 kcal).</p>";
-        return;
+      const kcalTarget = kcalInput !== "" ? parseFloat(kcalInput) : null;
+      const macrosTarget = {
+        protein: protInput !== "" ? parseFloat(protInput) : null,
+        carbs: carbInput !== "" ? parseFloat(carbInput) : null,
+        fat: fatInput !== "" ? parseFloat(fatInput) : null
+      };
+
+      const hasAnyMacro =
+        macrosTarget.protein !== null ||
+        macrosTarget.carbs !== null ||
+        macrosTarget.fat !== null;
+
+      const foodsList = alimentosInput
+        ? alimentosInput.split(/[,\n]/).map(f => f.trim()).filter(f => f.length > 0)
+        : [];
+
+      // Filtrar recetas por alimentos si se han indicado
+      let candidates;
+      if (foodsList.length > 0) {
+        candidates = recipes.filter(r =>
+          r.keywords.some(kw =>
+            foodsList.some(f => kw.includes(f) || f.includes(kw))
+          )
+        );
+        if (candidates.length === 0) {
+          candidates = recipes; // si no hay coincidencias, usar todas
+        }
+      } else {
+        candidates = recipes;
       }
 
-      // Ajuste muy básico de proteínas según nivel
-      let factorProte = 1.6;
-      if (nivel === "alto") factorProte = 2.0;
-      if (nivel === "bajo") factorProte = 1.4;
+      // Elegir mejor receta en función de kcal/macros
+      let chosenRecipe;
+      if (!kcalTarget && !hasAnyMacro) {
+        // Sin datos numéricos: elegir una receta al azar
+        chosenRecipe = candidates[Math.floor(Math.random() * candidates.length)];
+      } else {
+        let best = null;
+        for (const r of candidates) {
+          let score = 0;
+          if (kcalTarget) score += Math.abs(r.macros.kcal - kcalTarget);
+          if (macrosTarget.protein !== null) {
+            score += Math.abs(r.macros.protein - macrosTarget.protein) * 1.5;
+          }
+          if (macrosTarget.carbs !== null) {
+            score += Math.abs(r.macros.carbs - macrosTarget.carbs);
+          }
+          if (macrosTarget.fat !== null) {
+            score += Math.abs(r.macros.fat - macrosTarget.fat) * 1.2;
+          }
+          if (!best || score < best.score) {
+            best = { recipe: r, score };
+          }
+        }
+        chosenRecipe = best.recipe;
+      }
 
-      const pesoReferencia = 75; // solo para ejemplo
-      const proteTotal = Math.round(factorProte * pesoReferencia); // g/día
-      const kcalProte = proteTotal * 4;
-      const kcalRestantes = kcal - kcalProte;
-      const kcalCarb = Math.round(kcalRestantes * 0.55);
-      const kcalGrasa = Math.round(kcalRestantes * 0.45);
+      // Ajustar macros a las kcal objetivo (si se han puesto)
+      let finalMacros = { ...chosenRecipe.macros };
+      if (kcalTarget && chosenRecipe.macros.kcal > 0) {
+        const factor = kcalTarget / chosenRecipe.macros.kcal;
+        finalMacros = {
+          kcal: Math.round(kcalTarget),
+          protein: Math.round(chosenRecipe.macros.protein * factor),
+          carbs: Math.round(chosenRecipe.macros.carbs * factor),
+          fat: Math.round(chosenRecipe.macros.fat * factor)
+        };
+      }
 
-      const carbTotal = Math.round(kcalCarb / 4);
-      const grasaTotal = Math.round(kcalGrasa / 9);
+      const showPrice = foodsList.length === 0;
+      const priceText = showPrice
+        ? `<p class="generator-price">
+            Precio aproximado por ración: <strong>${chosenRecipe.price.toFixed(
+              1
+            )} €</strong>. Puede variar según supermercado y ofertas.
+           </p>`
+        : "";
 
-      // Reparto simple entre 5 comidas
-      const distribucion = {
-        Desayuno: 0.25,
-        "Snack mañana": 0.10,
-        Comida: 0.30,
-        Merienda: 0.10,
-        Cena: 0.25,
-      };
+      const ingredientsHtml = chosenRecipe.ingredients
+        .map(ing => `<li>${ing}</li>`)
+        .join("");
 
-      const recetas = {
-        Desayuno:
-          "Tostadas integrales con revuelto de huevos, tomate y aguacate + café o té sin azúcar.",
-        "Snack mañana":
-          "Yogur natural alto en proteína con un plátano pequeño y un puñado de frutos rojos.",
-        Comida:
-          "Plato combinado: pechuga de pollo a la plancha, arroz integral y ensalada verde con aceite de oliva.",
-        Merienda:
-          "Tostada de pan integral con hummus y zanahoria en bastones o una pieza de fruta.",
-        Cena:
-          "Bol de garbanzos salteados con verduras (pimiento, calabacín, cebolla) y un chorrito de aceite de oliva.",
-      };
+      const stepsHtml = chosenRecipe.steps
+        .map((step, idx) => `<li><strong>Paso ${idx + 1}.</strong> ${step}</li>`)
+        .join("");
 
-      const precioBase = 4.2; // € aproximados por ración completa
+      const alimentosInfo =
+        foodsList.length > 0
+          ? `<p><em>Hemos priorizado una receta que utiliza al menos uno de los alimentos que has indicado.</em></p>`
+          : "";
 
-      let html = `
-        <h3>Ejemplo de día con ~${kcal} kcal</h3>
+      resultado.innerHTML = `
+        <h3>Receta sugerida: ${chosenRecipe.name}</h3>
+        <p>${chosenRecipe.description}</p>
+        ${alimentosInfo}
         <div class="macros-row">
-          <div><strong>Proteína:</strong> ${proteTotal} g/día (≈ ${kcalProte} kcal)</div>
-          <div><strong>Hidratos:</strong> ${carbTotal} g/día (≈ ${kcalCarb} kcal)</div>
-          <div><strong>Grasas:</strong> ${grasaTotal} g/día (≈ ${kcalGrasa} kcal)</div>
+          <div><strong>Kcal aprox.:</strong> ${finalMacros.kcal} kcal</div>
+          <div><strong>Proteínas:</strong> ${finalMacros.protein} g</div>
+          <div><strong>Hidratos:</strong> ${finalMacros.carbs} g</div>
+          <div><strong>Grasas:</strong> ${finalMacros.fat} g</div>
         </div>
-        <p>Los valores son una estimación. En una versión conectada a ChatGPT podrías ajustar ingredientes, restricciones y gustos de forma mucho más precisa.</p>
+        ${priceText}
+        <h4>Ingredientes orientativos</h4>
+        <ul>${ingredientsHtml}</ul>
+        <h4>Pasos para prepararla</h4>
+        <ol>${stepsHtml}</ol>
       `;
-
-      Object.keys(distribucion).forEach((comida) => {
-        const kcalComida = Math.round(kcal * distribucion[comida]);
-        html += `
-          <div class="generator-meal">
-            <strong>${comida} · ~${kcalComida} kcal</strong>
-            <p>${recetas[comida]}</p>
-          </div>
-        `;
-      });
-
-      html += `
-        <p class="generator-price">
-          Coste aproximado del día completo: <strong>entre ${(precioBase - 0.8).toFixed(
-            1
-          )} € y ${(precioBase + 1.2).toFixed(
-        1
-      )} € por persona</strong>, dependiendo del supermercado y ofertas.
-        </p>
-      `;
-
-      resultado.innerHTML = html;
     }
   </script>
 </body>
