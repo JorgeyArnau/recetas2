@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nutri Evolve AI – Dietas inteligentes según tus kcal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fuentes similares a la plantilla (serif + sans) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-dark: #003727;
+      --green-circle: #004432;
+      --bg-light: #f5f3f0;
+      --accent: #ff5b2e;
+      --text-main: #163022;
+      --text-muted: #77736c;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Source Sans 3", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* CONTENEDOR GENERAL */
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER */
+
+    header {
+      background-color: #f1efec;
+      padding: 22px 0;
+      border-bottom: 1px solid #e3dfd8;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .logo-zone {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .logo-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+
+    .logo-text-main {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      line-height: 1.2;
+      color: var(--text-main);
+    }
+
+    .logo-text-sub {
+      font-style: italic;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 15px;
+    }
+
+    nav a {
+      color: var(--green-dark);
+      position: relative;
+    }
+
+    nav a.active,
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a.active::after,
+    nav a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 1px;
+      background-color: var(--accent);
+    }
+
+    /* HERO VERDE */
+
+    .hero {
+      background-color: var(--green-dark);
+      color: var(--white);
+      padding: 56px 0 52px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .hero-text {
+      font-size: 16px;
+      max-width: 560px;
+      margin-bottom: 18px;
+      color: #f9f6f1;
+    }
+
+    .hero-highlight {
+      font-weight: 600;
+    }
+
+    .hero-list {
+      margin-left: 18px;
+      margin-bottom: 22px;
+      font-size: 15px;
+    }
+
+    .hero-list li {
+      margin-bottom: 6px;
+    }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.16);
+    }
+
+    .hero-note {
+      font-size: 13px;
+      color: #f3e5dd;
+    }
+
+    .hero-media {
+      position: relative;
+      justify-self: end;
+    }
+
+    .hero-image-wrapper {
+      overflow: hidden;
+      border-radius: 12px;
+      max-width: 280px;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: -28px;
+      top: 40px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
+      color: var(--white);
+      transform: rotate(-8deg);
+    }
+
+    /* CÍRCULOS DE PASOS */
+
+    .steps-circles-section {
+      background-color: var(--bg-light);
+      padding: 32px 0 38px;
+      border-bottom: 1px solid #e3dfd8;
+    }
+
+    .steps-circles {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .step-circle {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background-color: var(--green-circle);
+      color: var(--white);
+      font-size: 13px;
+      padding: 20px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Playfair Display", serif;
+    }
+
+    .step-circle span {
+      display: block;
+      font-size: 11px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      opacity: 0.8;
+    }
+
+    .steps-arrow {
+      font-size: 26px;
+      color: var(--accent);
+    }
+
+    /* SECCIÓN CARDS DE PASOS */
+
+    .steps-cards-section {
+      padding: 48px 0 40px;
+    }
+
+    .steps-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .step-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 7px 16px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .step-card-image img {
+      height: 170px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .step-card-body {
+      padding: 16px 18px 18px;
+    }
+
+    .step-card-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .step-card-title {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: var(--green-dark);
+    }
+
+    .step-card-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .step-card-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* GENERADOR DE DIETA (SIMULACIÓN) */
+
+    .generator-section {
+      padding: 40px 0 56px;
+      border-top: 1px solid #e3dfd8;
+    }
+
+    .generator-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 1.3fr;
+      gap: 36px;
+      align-items: flex-start;
+    }
+
+    .generator-title {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .generator-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .generator-form label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .generator-form input,
+    .generator-form select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 4px;
+      border: 1px solid #d1cbc1;
+      font-size: 14px;
+      margin-bottom: 14px;
+      background-color: #fbfaf8;
+    }
+
+    .generator-hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: -6px;
+      margin-bottom: 14px;
+    }
+
+    .generator-result {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 18px 18px 20px;
+      box-shadow: 0 7px 16px rgba(0, 0, 0, 0.06);
+      font-size: 14px;
+    }
+
+    .generator-result h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .macros-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      font-size: 12px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .generator-meal {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed #e0d7cd;
+    }
+
+    .generator-meal strong {
+      font-family: "Playfair Display", serif;
+      font-size: 15px;
+    }
+
+    .generator-price {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background-color: var(--green-dark);
+      color: var(--white);
+      padding: 40px 0 34px;
+      margin-top: 10px;
+    }
+
+    .footer-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .footer-heart {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .footer-title {
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      margin-bottom: 14px;
+      color: #f2ece4;
+    }
+
+    .footer-form {
+      max-width: 360px;
+    }
+
+    .footer-form label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .footer-form input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 3px;
+      border: 1px solid #d1cbc1;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .footer-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      margin-bottom: 10px;
+    }
+
+    .footer-checkbox input {
+      width: auto;
+      margin: 0;
+    }
+
+    .btn-footer {
+      width: 100%;
+      padding: 8px 12px;
+      font-size: 13px;
+      border-radius: 0;
+      border: 1px solid #d1cbc1;
+      background-color: transparent;
+      color: var(--white);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .footer-image-wrapper {
+      max-width: 360px;
+      justify-self: end;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.45);
+    }
+
+    .footer-bottom {
+      margin-top: 18px;
+      font-size: 11px;
+      text-align: center;
+      color: #e5dccf;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-media {
+        justify-self: flex-start;
+        margin-top: 22px;
+      }
+
+      .generator-layout,
+      .footer-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-image-wrapper,
+      .hero-image-wrapper {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .steps-cards-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .steps-circles {
+        gap: 18px;
+      }
+
+      .step-circle {
+        width: 96px;
+        height: 96px;
+        font-size: 11px;
+        padding: 14px 12px;
+      }
+
+      .hero-eyebrow {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <div class="nav-bar">
+        <div class="logo-zone">
+          <div class="logo-circle">NE</div>
+          <div>
+            <div class="logo-text-main">Nutri Evolve AI</div>
+            <div class="logo-text-sub">Tu dieta diaria creada por inteligencia artificial</div>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#inicio" class="active">Inicio</a></li>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#generador">Probar ahora</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO VERDE -->
+  <section class="hero" id="inicio">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-eyebrow">Hi!</div>
+        <h1 class="hero-title">Tu plan de comidas, listo en menos de 1 minuto.</h1>
+        <p class="hero-text">
+          Introduce las <span class="hero-highlight">kcal que quieres comer</span> o los
+          <span class="hero-highlight">alimentos que tienes en casa</span>. Nuestra web, conectada con ChatGPT,
+          genera al instante un día completo de comidas saludables con recetas fáciles, macros aproximados
+          y un coste pensado para que comer bien también sea barato.
+        </p>
+        <ul class="hero-list">
+          <li>Dietas personalizadas según tus calorías objetivo y nivel de actividad.</li>
+          <li>Recetas claras paso a paso, con fotos representativas para que no te pierdas.</li>
+          <li>Ideas realistas para el día a día: rápidas, sencillas y con ingredientes normales.</li>
+        </ul>
+        <div class="hero-cta">
+          <button class="btn-primary" onclick="document.getElementById('generador').scrollIntoView({behavior:'smooth'})">
+            Generar mi dieta de hoy
+          </button>
+          <p class="hero-note">Sin registro, solo prueba cómo funcionaría tu día de comidas.</p>
+        </div>
+      </div>
+
+      <div class="hero-media">
+        <div class="hero-image-wrapper">
+          <!-- Cambia la imagen si quieres otra -->
+          <img src="https://images.pexels.com/photos/3298637/pexels-photo-3298637.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Persona cocinando saludable">
+        </div>
+        <div class="hero-badge">AI</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÍRCULOS DE PASOS -->
+  <section class="steps-circles-section" id="como-funciona">
+    <div class="container">
+      <div class="steps-circles">
+        <div class="step-circle">
+          <div>
+            <span>Paso 1</span>
+            Elige tus kcal o los alimentos que tienes.
+          </div>
+        </div>
+        <div class="steps-arrow">➜</div>
+        <div class="step-circle">
+          <div>
+            <span>Paso 2</span>
+            La IA organiza tu día en 3–5 comidas equilibradas.
+          </div>
+        </div>
+        <div class="steps-arrow">➜</div>
+        <div class="step-circle">
+          <div>
+            <span>Paso 3</span>
+            Sigues las recetas con fotos, macros y precio estimado.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS DE PASOS CON IMÁGENES -->
+  <section class="steps-cards-section">
+    <div class="container steps-cards-grid">
+      <!-- CARD 1 -->
+      <article class="step-card">
+        <div class="step-card-image">
+          <img src="https://images.pexels.com/photos/8478058/pexels-photo-8478058.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Persona usando móvil en la cocina">
+        </div>
+        <div class="step-card-body">
+          <div class="step-card-kicker">Paso 1 · Configura tu día</div>
+          <h2 class="step-card-title">Dinos cuántas kcal quieres comer hoy</h2>
+          <p class="step-card-text">
+            Introduces tus calorías objetivo, tu número de comidas y, si quieres, marcas los alimentos que
+            tienes por casa. La IA usa esa información como punto de partida, igual que haría un nutricionista,
+            pero en cuestión de segundos.
+          </p>
+          <p class="step-card-meta">Ideal si quieres controlar peso, recomposición corporal o simplemente ordenar tus comidas.</p>
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="step-card">
+        <div class="step-card-image">
+          <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Mesa con ingredientes saludables">
+        </div>
+        <div class="step-card-body">
+          <div class="step-card-kicker">Paso 2 · IA conectada a ChatGPT</div>
+          <h2 class="step-card-title">Generamos un plan completo con macros</h2>
+          <p class="step-card-text">
+            El sistema reparte esas kcal entre tus comidas, propone recetas coherentes entre sí
+            y calcula una estimación de <strong>proteínas, hidratos y grasas</strong> para que veas el
+            equilibrio global del día de un vistazo.
+          </p>
+          <p class="step-card-meta">Tendrás una estructura clara, sin menús imposibles ni platos que parezcan de restaurante.</p>
+        </div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="step-card">
+        <div class="step-card-image">
+          <img src="https://images.pexels.com/photos/5591719/pexels-photo-5591719.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Plato de comida saludable servido">
+        </div>
+        <div class="step-card-body">
+          <div class="step-card-kicker">Paso 3 · Cocina sin complicarte</div>
+          <h2 class="step-card-title">Recetas paso a paso + precio aproximado</h2>
+          <p class="step-card-text">
+            Cada receta viene con instrucciones sencillas, numeradas y sin texto de relleno. Además,
+            verás un <strong>precio estimado por ración</strong> para que puedas comer sano sin
+            disparar el presupuesto.
+          </p>
+          <p class="step-card-meta">Si algo no encaja, vuelves atrás, cambias las kcal o ingredientes y generas una versión nueva.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- GENERADOR SIMPLIFICADO -->
+  <section class="generator-section" id="generador">
+    <div class="container generator-layout">
+      <div>
+        <h2 class="generator-title">Prueba cómo podría ser tu día de comidas</h2>
+        <p class="generator-subtitle">
+          Esta es una versión simplificada que reparte tus kcal entre 3 comidas principales y 2 snacks.
+          En un proyecto real, aquí conectarías tu clave de la API de ChatGPT para ajustar aún más el plan.
+        </p>
+
+        <form class="generator-form" onsubmit="event.preventDefault(); generarDieta();">
+          <label for="kcal">Kcal que quieres comer hoy</label>
+          <input type="number" id="kcal" min="1200" max="4500" placeholder="Ej. 2300" required />
+          <p class="generator-hint">Usaremos estas kcal como referencia para repartirlas en tus comidas.</p>
+
+          <label for="nivel">Nivel de actividad</label>
+          <select id="nivel">
+            <option value="bajo">Bajo – día tranquilo</option>
+            <option value="medio" selected>Medio – entreno suave</option>
+            <option value="alto">Alto – doble sesión o mucho movimiento</option>
+          </select>
+
+          <button type="submit" class="btn-primary">Generar ejemplo de menú</button>
+        </form>
+      </div>
+
+      <aside class="generator-result" id="resultado">
+        <h3>Tu plan aparecerá aquí</h3>
+        <p>Introduce tus kcal y haz clic en “Generar ejemplo de menú” para ver un día completo con macros aproximados.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contacto">
+    <div class="container footer-layout">
+      <div>
+        <div class="footer-heart">❤️</div>
+        <h2 class="footer-title">Recibe ideas de menús saludables y baratos</h2>
+        <p class="footer-text">
+          Estamos construyendo una herramienta pensada para personas reales: estudiantes, deportistas,
+          gente que trabaja muchas horas y quiere tener la comida resuelta sin vivir a base de comida rápida.
+          Déjanos tu correo y te avisaremos cuando la versión completa esté lista.
+        </p>
+        <form class="footer-form">
+          <label for="email-footer">Email *</label>
+          <input type="email" id="email-footer" placeholder="Tu correo electrónico" />
+          <div class="footer-checkbox">
+            <input type="checkbox" id="acepto" />
+            <label for="acepto">Sí, acepto recibir novedades sobre la app.</label>
+          </div>
+          <button type="button" class="btn-footer">Suscribirme ahora</button>
+        </form>
+      </div>
+
+      <div class="footer-image-wrapper">
+        <img src="https://images.pexels.com/photos/3184194/pexels-photo-3184194.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Paisaje y estilo de vida activo">
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © <span id="year"></span> Nutri Evolve AI · Proyecto demo de dietas generadas con IA.
+    </div>
+  </footer>
+
+  <script>
+    // Año footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Generador muy simplificado solo para ejemplo visual
+    function generarDieta() {
+      const kcalInput = document.getElementById("kcal");
+      const nivel = document.getElementById("nivel").value;
+      const resultado = document.getElementById("resultado");
+
+      const kcal = parseInt(kcalInput.value, 10);
+      if (isNaN(kcal) || kcal < 1200) {
+        resultado.innerHTML =
+          "<h3>Revisa los datos</h3><p>Introduce un valor de calorías razonable (a partir de 1200 kcal).</p>";
+        return;
+      }
+
+      // Ajuste muy básico de proteínas según nivel
+      let factorProte = 1.6;
+      if (nivel === "alto") factorProte = 2.0;
+      if (nivel === "bajo") factorProte = 1.4;
+
+      const pesoReferencia = 75; // solo para ejemplo
+      const proteTotal = Math.round(factorProte * pesoReferencia); // g/día
+      const kcalProte = proteTotal * 4;
+      const kcalRestantes = kcal - kcalProte;
+      const kcalCarb = Math.round(kcalRestantes * 0.55);
+      const kcalGrasa = Math.round(kcalRestantes * 0.45);
+
+      const carbTotal = Math.round(kcalCarb / 4);
+      const grasaTotal = Math.round(kcalGrasa / 9);
+
+      // Reparto simple entre 5 comidas
+      const distribucion = {
+        Desayuno: 0.25,
+        "Snack mañana": 0.10,
+        Comida: 0.30,
+        Merienda: 0.10,
+        Cena: 0.25,
+      };
+
+      const recetas = {
+        Desayuno:
+          "Tostadas integrales con revuelto de huevos, tomate y aguacate + café o té sin azúcar.",
+        "Snack mañana":
+          "Yogur natural alto en proteína con un plátano pequeño y un puñado de frutos rojos.",
+        Comida:
+          "Plato combinado: pechuga de pollo a la plancha, arroz integral y ensalada verde con aceite de oliva.",
+        Merienda:
+          "Tostada de pan integral con hummus y zanahoria en bastones o una pieza de fruta.",
+        Cena:
+          "Bol de garbanzos salteados con verduras (pimiento, calabacín, cebolla) y un chorrito de aceite de oliva.",
+      };
+
+      const precioBase = 4.2; // € aproximados por ración completa
+
+      let html = `
+        <h3>Ejemplo de día con ~${kcal} kcal</h3>
+        <div class="macros-row">
+          <div><strong>Proteína:</strong> ${proteTotal} g/día (≈ ${kcalProte} kcal)</div>
+          <div><strong>Hidratos:</strong> ${carbTotal} g/día (≈ ${kcalCarb} kcal)</div>
+          <div><strong>Grasas:</strong> ${grasaTotal} g/día (≈ ${kcalGrasa} kcal)</div>
+        </div>
+        <p>Los valores son una estimación. En una versión conectada a ChatGPT podrías ajustar ingredientes, restricciones y gustos de forma mucho más precisa.</p>
+      `;
+
+      Object.keys(distribucion).forEach((comida) => {
+        const kcalComida = Math.round(kcal * distribucion[comida]);
+        html += `
+          <div class="generator-meal">
+            <strong>${comida} · ~${kcalComida} kcal</strong>
+            <p>${recetas[comida]}</p>
+          </div>
+        `;
+      });
+
+      html += `
+        <p class="generator-price">
+          Coste aproximado del día completo: <strong>entre ${(precioBase - 0.8).toFixed(
+            1
+          )} € y ${(precioBase + 1.2).toFixed(
+        1
+      )} € por persona</strong>, dependiendo del supermercado y ofertas.
+        </p>
+      `;
+
+      resultado.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
